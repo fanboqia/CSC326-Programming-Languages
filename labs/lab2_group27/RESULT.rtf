@@ -1,0 +1,160 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\fnil\fcharset0 HelveticaNeue;\f2\froman\fcharset0 Times-Roman;
+}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red53\green53\blue53;\red0\green0\blue0;
+}
+{\*\expandedcolortbl;;\cssrgb\c20000\c20000\c20000;\cssrgb\c27059\c27059\c27059;\cssrgb\c0\c0\c0;
+}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}}{\leveltext\leveltemplateid1\'00;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\tx566\pardeftab720\sl340\sa240\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf2 (results obtained at the first peak before time 20:30 on aws monitor)\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl340\sa240\partightenfactor0
+\ls1\ilvl0\cf2 		\expnd0\expndtw0\kerning0
+Maximum number of connections: 200\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 		\expnd0\expndtw0\kerning0
+maximum number of requests per second: 
+\f1\fs24 \cf3 \kerning1\expnd0\expndtw0 Requests per second:    8.15 [#/sec] (mean)\
+\ls1\ilvl0
+\b\fs34 \cf3 		
+\f0\b0\fs29\fsmilli14667 \cf2 \expnd0\expndtw0\kerning0
+latency per request : 
+\f1\fs24 \cf3 \kerning1\expnd0\expndtw0 8.15
+\f2 \cf4 \expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 		
+\f0\fs29\fsmilli14667 \cf2 \expnd0\expndtw0\kerning0
+Utilization of CPU, memory, disk IO, and network (From Amazon Console Monitor)
+\f2\fs24 \cf4 \uc0\u8232 CPU:17.5%\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 		Memory:
+\f1 \cf3 508600 bytes\
+\ls1\ilvl0
+\f2 \cf4 		DiskIO: in: 0 out: 0\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 		Network: in:  38201.2bytes out: 
+\f1 \cf3 38201.2bytes\
+\pard\tx220\tx720\tx1133\pardeftab720\li720\fi-720\sl340\sa240\partightenfactor0
+\ls1\ilvl0\cf3 		packets-in: 277.2 packets-out:187.8
+\b\fs34 \cf3 \
+\pard\pardeftab560\partightenfactor0
+\ls1\ilvl0\cf3 MAXIMUM CONNECTION RESULTS:\
+\pard\pardeftab560\slleading20\pardirnatural\partightenfactor0
+\ls1\ilvl0
+\b0\fs24 \cf3 		\
+		ubuntu@ip-172-31-37-89:~/csc326Project$ ab -n 200 -c 200 http://0.0.0.0:80/?keywords=helloworld+foo+bar\
+		This is ApacheBench, Version 2.3 <$Revision: 1528965 $>\
+		Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/\
+		Licensed to The Apache Software Foundation, http://www.apache.org/\
+		\
+		Benchmarking 0.0.0.0 (be patient)\
+		Completed 100 requests\
+		Completed 200 requests\
+		Finished 200 requests\
+		\
+		\
+		Server Software:        WSGIServer/0.1\
+		Server Hostname:        0.0.0.0\
+		Server Port:            80\
+		\
+		Document Path:          /?keywords=helloworld+foo+bar\
+		Document Length:        2276 bytes\
+		\
+		Concurrency Level:      200\
+		Time taken for tests:   24.543 seconds\
+		Complete requests:      200\
+		Failed requests:        0\
+		Total transferred:      508600 bytes\
+		HTML transferred:       455200 bytes\
+		Requests per second:    8.15 [#/sec] (mean)\
+		Time per request:       24543.452 [ms] (mean)\
+		Time per request:       122.717 [ms] (mean, across all concurrent requests)\
+		Transfer rate:          20.24 [Kbytes/sec] received\
+		\
+		Connection Times (ms)\
+		              min  mean[+/-sd] median   max\
+		Connect:        0    1   2.5      0      13\
+		Processing:     5  149 1732.9     23   24530\
+		Waiting:        0  148 1732.9     22   24530\
+		Total:         14  150 1733.8     23   24543\
+		\
+		Percentage of the requests served within a certain time (ms)\
+		  50%     23\
+		  66%     23\
+		  75%     23\
+		  80%     23\
+		  90%     24\
+		  95%     25\
+		  98%    224\
+		  99%    240\
+\pard\pardeftab560\slleading20\partightenfactor0
+\ls1\ilvl0\cf3 		 100%  24543 (longest request)\
+\pard\pardeftab560\slleading20\pardirnatural\partightenfactor0
+\ls1\ilvl0\cf3 		\
+\pard\pardeftab560\partightenfactor0
+\ls1\ilvl0
+\b\fs34 \cf3 MAXIMUM CPU, memory, disk IO , network \
+		\
+\pard\pardeftab560\slleading20\pardirnatural\partightenfactor0
+\ls1\ilvl0
+\b0\fs24 \cf3 		ubuntu@ip-172-31-37-89:~/csc326Project$ dstat\
+		You did not select any stats, using -cdngy by default.\
+		----total-cpu-usage---- -dsk/total- -net/total- ---paging-- ---system--\
+		\ul \ulc3 usr\ulnone  \ul sys\ulnone  \ul idl\ulnone  \ul wai\ulnone  \ul hiq\ulnone  \ul siq\ulnone |\ul  read\ulnone  \ul  writ\ulnone |\ul  recv\ulnone  \ul  send\ulnone |\ul   in \ulnone  \ul  out \ulnone |\ul  int \ulnone  \ul  csw \ulnone \
+\ls1\ilvl0		  0   0 100   0   0   0|2966B 8114B|   0     0 |   0     0 |   8    12 \
+\ls1\ilvl0		  0   0 100   0   0   0|   0     0 | 388B 1230B|   0     0 |  26    32 \
+\ls1\ilvl0		  0   0 100   0   0   0|   0     0 | 156B  802B|   0     0 |  15    14 \
+\ls1\ilvl0		 53  14  29   0   0   4|   0     0 | 880B 2094B|   0     0 | 564  5942 \
+\ls1\ilvl0		  4   2  94   0   0   0|   0     0 |  52B  350B|   0     0 |  72   612 \
+\ls1\ilvl0		  0   0 100   0   0   0|   0     0 | 156B  802B|   0     0 |  18    12 \
+\ls1\ilvl0		  1   0  99   0   0   0|   0     0 | 104B  452B|   0     0 |  28    31 \
+\ls1\ilvl0		  0   0 100   0   0   0|   0     0 | 104B  452B|   0     0 |  15    13 \
+\ls1\ilvl0		  0   0  94   6   0   0|   0  1716k| 104B  452B|   0     0 |  52    17 \
+\ls1\ilvl0		  0   1  99   0   0   0|   0     0 | 104B  460B|   0     0 |  16    12 \
+\ls1\ilvl0		  0   0 100   0   0   0|   0     0 | 104B  452B|   0     0 |  18    10 \
+\ls1\ilvl0		  0   1  99   0   0   0|   0     0 | 104B  452B|   0     0 |  14    10 \
+\ls1\ilvl0		  0   0 100   0   0   0|   0     0 | 104B  452B|   0     0 |  15    10 \
+\ls1\ilvl0		  0   0 100   0   0   0|   0     0 | 104B  452B|   0     0 |  17    13 \
+\ls1\ilvl0		  0   0 100   0   0   0|   0     0 | 104B  452B|   0     0 |  16    12 \
+\ls1\ilvl0		  1   0  99   0   0   0|   0     0 | 104B  452B|   0     0 |  15    10 \
+\ls1\ilvl0		  0   0 100   0   0   0|   0     0 | 104B  452B|   0     0 |  15    10 \
+\ls1\ilvl0		  0   0 100   0   0   0|   0     0 | 104B  452B|   0     0 |  16    12 \
+\ls1\ilvl0		  1   0  99   0   0   0|   0  8192B| 104B  452B|   0     0 |  20    11 \
+\ls1\ilvl0		  0   1  99   0   0   0|   0     0 | 104B  460B|   0     0 |  15    10 \
+\ls1\ilvl0		  0   0 100   0   0   0|   0     0 | 104B  452B|   0     0 |  15    10 \
+\ls1\ilvl0		  1   0  99   0   0   0|   0     0 | 104B  452B|   0     0 |  15    12 \
+\ls1\ilvl0		  0   0 100   0   0   0|   0     0 | 104B  452B|   0     0 |  16    12 \
+\ls1\ilvl0		----total-cpu-usage---- -dsk/total- -net/total- ---paging-- ---system--\
+\ls1\ilvl0		\ul \ulc3 usr\ulnone  \ul sys\ulnone  \ul idl\ulnone  \ul wai\ulnone  \ul hiq\ulnone  \ul siq\ulnone |\ul  read\ulnone  \ul  writ\ulnone |\ul  recv\ulnone  \ul  send\ulnone |\ul   in \ulnone  \ul  out \ulnone |\ul  int \ulnone  \ul  csw \ulnone \
+\ls1\ilvl0		  0   0  98   2   0   0|   0  1728k| 104B  554B|   0     0 | 199    16 \
+\ls1\ilvl0		  1   0  99   0   0   0|   0  4096B| 312B 1246B|   0     0 |  23    22 \
+\ls1\ilvl0		  0   0 100   0   0   0|   0     0 | 104B  460B|   0     0 |  16    12 \
+\ls1\ilvl0		  1   0  99   0   0   0|   0     0 | 104B  452B|   0     0 |  15    10 \
+\ls1\ilvl0		  0   0 100   0   0   0|   0     0 | 104B  452B|   0     0 |  13    10 \
+\ls1\ilvl0		  0   0 100   0   0   0|   0     0 | 104B  452B|   0     0 |  15    11 \
+\ls1\ilvl0		  1   0  99   0   0   0|   0     0 | 104B  452B|   0     0 |  14    12 \
+\ls1\ilvl0		  0   0 100   0   0   0|   0     0 | 104B  452B|   0     0 |  15    10 \
+\ls1\ilvl0		  0   1  99   0   0   0|   0     0 | 208B  824B|   0     0 |  30    35 \
+\ls1\ilvl0		  1   0  99   0   0   0|   0     0 | 104B  452B|   0     0 |  13    19 \
+\ls1\ilvl0		  0   0 100   0   0   0|   0   124k| 104B  452B|   0     0 |  44    18 \
+\ls1\ilvl0		  0   0 100   0   0   0|   0     0 | 104B  460B|   0     0 |  12    14 \
+\ls1\ilvl0		  1   0  99   0   0   0|   0     0 | 104B  452B|   0     0 |  11    14 \
+\ls1\ilvl0		  0   0 100   0   0   0|   0     0 | 104B  452B|   0     0 |  11    14 \
+\ls1\ilvl0		  0   0 100   0   0   0|   0     0 | 104B  452B|   0     0 |  13    18 \
+\ls1\ilvl0		  1   0  96   3   0   0|   0   784k| 104B  452B|   0     0 |  57    22 \
+\pard\pardeftab560\partightenfactor0
+\ls1\ilvl0
+\b\fs34 \cf3 		  0   0 100   0   0   0|   0     0 | 104B  460B|   0     0 |  11    14\uc0\u8232 \
+\ls1\ilvl0		\uc0\u8232 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl340\sa240\partightenfactor0
+\ls1\ilvl0
+\f2\b0\fs24 \cf4 		\expnd0\expndtw0\kerning0
+\uc0\u8232 \
+\pard\tx566\pardeftab720\sl340\sa293\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf2 \
+\
+\
+}

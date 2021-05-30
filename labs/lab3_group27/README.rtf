@@ -1,0 +1,114 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\froman\fcharset0 Times-Roman;\f2\fswiss\fcharset0 ArialRoundedMTBold;
+\f3\fnil\fcharset0 HelveticaNeue;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red242\green242\blue242;
+\red0\green0\blue0;\red53\green53\blue53;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;\csgray\c95825;
+\csgray\c0\c85000;\cssrgb\c27059\c27059\c27059;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{none\}}{\leveltext\leveltemplateid1\'00;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\b\fs24 \cf0 RUN BACKEND:
+\b0 \
+\
+1. cd csc326Project/crawler\
+2. python run_backend_test.py  (show the 
+\f1\i\fs26\fsmilli13333 \cf2 \cb3 	
+\i0 \expnd0\expndtw0\kerning0
+greatest-to-least PageRank sorted order, store all the data in redis database (lexicon, document index, inverted index, PageRank scores)
+\i  
+\f0\i0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 ) \
+\
+(You can just python, then enter the command to check the data from redis\'85\
+import pickle\
+print pickle.loads(r_server.get('lexicon'))\
+print pickle.loads(r_server.get('docID'))\
+print pickle.loads(r_server.get('inverted_Index'))\
+print pickle.loads(r_server.get('pageRank_Score'))\
+ )\
+\
+\
+
+\b FRONTEND:\
+public DNS: http://ec2-34-234-38-53.compute-1.amazonaws.com\
+\
+benchmark setup:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f2\b0\fs26 \cf4 \cb5 \CocoaLigature0 ab -n 200 -c 200 http://0.0.0.0:80/?keywords=helloworld+foo+bar
+\f0\b\fs24 \cf0 \cb1 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+benchmark results:\
+Last Lab:\
+\pard\pardeftab560\slleading20\pardirnatural\partightenfactor0
+\ls1\ilvl0
+\f3\b0 \cf6 ubuntu@ip-172-31-37-89:~/csc326Project$ ab -n 200 -c 200 http://0.0.0.0:80/?keywords=helloworld+foo+bar\
+		This is ApacheBench, Version 2.3 <$Revision: 1528965 $>\
+		Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/\
+		Licensed to The Apache Software Foundation, http://www.apache.org/\
+		\
+		Benchmarking 0.0.0.0 (be patient)\
+		Completed 100 requests\
+		Completed 200 requests\
+		Finished 200 requests\
+		\
+		\
+		Server Software:        WSGIServer/0.1\
+		Server Hostname:        0.0.0.0\
+		Server Port:            80\
+		\
+		Document Path:          /?keywords=helloworld+foo+bar\
+		Document Length:        2276 bytes\
+		\
+		Concurrency Level:      200\
+		Time taken for tests:   24.543 seconds\
+		Complete requests:      200\
+		Failed requests:        0\
+		Total transferred:      508600 bytes\
+		HTML transferred:       455200 bytes\
+		Requests per second:    8.15 [#/sec] (mean)\
+		Time per request:       24543.452 [ms] (mean)\
+		Time per request:       122.717 [ms] (mean, across all concurrent requests)\
+		Transfer rate:          20.24 [Kbytes/sec] received\
+		\
+		Connection Times (ms)\
+		              min  mean[+/-sd] median   max\
+		Connect:        0    1   2.5      0      13\
+		Processing:     5  149 1732.9     23   24530\
+		Waiting:        0  148 1732.9     22   24530\
+		Total:         14  150 1733.8     23   24543\
+		\
+		Percentage of the requests served within a certain time (ms)\
+		  50%     23\
+		  66%     23\
+		  75%     23\
+		  80%     23\
+		  90%     24\
+		  95%     25\
+		  98%    224\
+		  99%    240\
+\pard\pardeftab560\slleading20\partightenfactor0
+\ls1\ilvl0\cf6 		 100%  24543 (longest request)
+\f0\b \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+This Lab:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f2\b0\fs26 \cf4 \cb5 \CocoaLigature0 ubuntu@ip-172-31-37-89:~/csc326Project$ ab -n 200 -c 200 http://0.0.0.0:80/?keywords=helloworld+foo+bar\
+This is ApacheBench, Version 2.3 <$Revision: 1528965 $>\
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/\
+Licensed to The Apache Software Foundation, http://www.apache.org/\
+\
+Benchmarking 0.0.0.0 (be patient)\
+Completed 100 requests\
+apr_socket_recv: Connection reset by peer (104)\
+Total of 184 requests completed
+\f0\fs24 \cf0 \cb1 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+As you can see, at this time, it is impossible to make 200 concurrent connections, because when the user submits his keywords, the keywords are going to be processed in a new page and analyzed through redis database which takes a lot of time relative to memory access. To sum up, by integrating new features to the searchEngine, the performance must be decreased to some extent.\
+}
